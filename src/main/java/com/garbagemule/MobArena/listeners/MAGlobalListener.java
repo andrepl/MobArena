@@ -30,6 +30,7 @@ import org.bukkit.event.entity.EntityTargetEvent;
 import org.bukkit.event.entity.EntityTeleportEvent;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.event.entity.PotionSplashEvent;
+import org.bukkit.event.entity.ProjectileLaunchEvent;
 import org.bukkit.event.hanging.HangingBreakEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerAnimationEvent;
@@ -242,8 +243,14 @@ public class MAGlobalListener implements Listener
             arena.getEventListener().onPotionSplash(event);
         }
     }
-    
-    
+
+    @EventHandler(priority = EventPriority.NORMAL)
+    public void projectileLaunch(ProjectileLaunchEvent event) {
+        for (Arena arena : am.getArenas()) {
+            arena.getEventListener().onProjectileLaunch(event);
+        }
+    }
+
     
     ///////////////////////////////////////////////////////////////////////////
     //                                                                       //
